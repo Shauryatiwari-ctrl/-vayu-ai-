@@ -1,0 +1,61 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+```
+
+4. Click **"Commit new file"**
+
+---
+
+### **Step 3: Enable GitHub Pages**
+
+1. Go to your repo **Settings** (top right)
+2. Scroll down to **"Pages"** (left sidebar)
+3. Under **"Source"**, select:
+   - Branch: **`gh-pages`**
+   - Folder: **`/ (root)`**
+4. Click **"Save"**
+
+---
+
+### **Step 4: Wait for Deployment**
+
+1. Go to **"Actions"** tab in your repo
+2. You'll see the workflow running (yellow dot → green checkmark)
+3. Wait 2-3 minutes
+
+---
+
+### **Step 5: Access Your Site! 🎉**
+
+Your site will be live at:
+```
+https://YOUR_USERNAME.github.io/vayu-ai/
