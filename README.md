@@ -56,3 +56,4 @@ MIT License - feel free to use for personal or commercial projects!
 ---
 
 Made with 💙 by Vayu.ai Team
+## Vayu.ai - Updated
